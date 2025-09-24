@@ -1,1 +1,0 @@
-packageSearchIndex = [{"m":"Atcoder","l":"paiza"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();

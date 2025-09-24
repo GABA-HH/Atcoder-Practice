@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"paiza","l":"Adult"},{"p":"paiza","l":"Main"},{"p":"paiza","l":"Underage"},{"l":"すべてのクラスおよびインタフェース","u":"allclasses-index.html"}];updateSearchResults();
