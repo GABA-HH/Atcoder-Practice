@@ -1,4 +1,4 @@
-package Beginer425;
+package Begginer425;
 
 import java.util.Scanner;
 

@@ -1,0 +1,8 @@
+{
+    "github.copilot.advanced": {
+        "enabled":false,
+    },
+    "github.copilot.enable": {
+        "*": false
+    }
+}
