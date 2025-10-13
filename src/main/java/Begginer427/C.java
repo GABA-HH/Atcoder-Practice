@@ -42,8 +42,8 @@ public class C {
             // System.out.println(Arrays.toString(node));
             int DeleteNum = 0;
 
-            for(int i=0; i<edge.length; i++) {
-                if (node[edge[i][0]]==node[edge[i][1]]) {
+            for(int[] e : edge) {
+                if (node[e[0]] == node[e[1]]) {
                     DeleteNum++;
                 }
             }
