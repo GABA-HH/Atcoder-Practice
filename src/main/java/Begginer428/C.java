@@ -1,53 +1,66 @@
 package Begginer428;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Scanner;
 
 public class C {
+    private static int balance = 0;
+    private static int minPrefix = 0;
+    private static int prevBalance = 0;
+    private static int prevMinPrefix = 0;
 
-    private static final String deleteString = "()";
+    private static final Deque<Integer> balanceStack = new ArrayDeque<>();
+    private static final Deque<Integer> minPrefixStack = new ArrayDeque<>();
+    
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             
             int Q = sc.nextInt();
-            int queryNum = 0;
-            String queryString = "";
             StringBuilder S = new StringBuilder();
 
-            for (int i=0;i<Q;i++) {
-                queryNum=sc.nextInt();
+            for (int i = 0; i < Q; i++) {
+                int queryNum = sc.nextInt();
 
-                if (1==queryNum) {
-                    S.append(sc.next());
-                    // System.out.println(i+"番目のqueryの結果："+S);
-                } else if (2==queryNum) {
-                    S.delete(S.length()-1, S.length());
-                    // System.out.println(i+"番目のqueryの結果："+S);
+                if (1 == queryNum) {
+                    String addChar = sc.next();
+                    S.append(addChar);
+                    checkGoodString(S, addChar);
+                } else if (2 == queryNum) {
+                    if (S.length() > 0) {
+                        S.delete(S.length() - 1, S.length());
+                    }
+                    checkGoodString(S, "");
                 }
-
-                checkGoodString(S);
             }
-
-        } 
+        }
     }
 
-    private static void checkGoodString(StringBuilder S) {
+    private static void checkGoodString(StringBuilder S, String adString) {
 
-        StringBuilder sb = new StringBuilder(S);
+        if ("(".equals(adString) || ")".equals(adString)) {
+            prevBalance = balance;
+            prevMinPrefix = minPrefix;
+            balanceStack.push(prevBalance);
+            minPrefixStack.push(prevMinPrefix);
 
-        while (1<sb.length()) {
-            if (-1 != sb.indexOf(deleteString)) {
-                sb.delete(sb.indexOf(deleteString), sb.indexOf(deleteString)+2);
-                // System.out.println(sb);
+            if ("(".equals(adString)) {
+                balance = prevBalance + 1;
             } else {
-                break;
+                balance = prevBalance - 1;
+            }
+            minPrefix = Math.min(prevMinPrefix, balance);
+        } else {
+            if (!balanceStack.isEmpty() && !minPrefixStack.isEmpty()) {
+                balance = balanceStack.pop();
+                minPrefix = minPrefixStack.pop();
+            } else {
+                balance = 0;
+                minPrefix = 0;
             }
         }
 
-        if (0==sb.length()) {
+        if (balance == 0 && minPrefix >= 0) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
