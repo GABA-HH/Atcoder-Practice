@@ -1,8 +1,27 @@
 {
+    "editor.inlineSuggest.enabled": false,
     "github.copilot.advanced": {
-        "enabled":false,
+        "enabled": false
     },
     "github.copilot.enable": {
         "*": false
-    }
+    },
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+    "editor.inlineSuggest.edits.renderSideBySide": "never",
+    "editor.inlineSuggest.edits.showLongDistanceHint": false,
+    "editor.inlineSuggest.experimental.emptyResponseInformation": false,
+    // --- ① IntelliSense（ポップアップ候補・単語補完）の無効化 ---
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.wordBasedSuggestions": "off",
+    // --- ② Antigravity / AI インライン補完・サジェストの無効化 ---
+    "antigravity.inlineSuggest.enabled": false,
+    "antigravity.autocomplete.enabled": false,
+    "antigravity.suggestions.enabled": false,
+    "antigravity.inlineCompletion.enabled": false
 }
